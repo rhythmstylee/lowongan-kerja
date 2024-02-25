@@ -1,0 +1,30 @@
+<?php
+// URL halaman web target
+$url = "https://dreamjobsja.com/";
+
+// Mendapatkan konten HTML dari halaman web
+$html = file_get_contents($url);
+
+// Membuat objek DOM dari HTML
+$dom = new DOMDocument();
+@$dom->loadHTML($html);
+
+// Mendapatkan elemen dengan class "col-md-4" (atau sesuaikan dengan class yang sesuai)
+$colElements = $dom->getElementsByClassName("col-md-4");
+
+// Loop melalui elemen-elemen
+foreach ($colElements as $colElement) {
+    // Mendapatkan informasi yang diperlukan
+    $jobTitle = $colElement->getElementsByTagName("h3")->item(0)->textContent;
+    $location = $colElement->getElementsByTagName("p")->item(0)->textContent;
+    $companyLogo = $colElement->getElementsByTagName("img")->item(0)->getAttribute("src");
+    $jobLink = $colElement->getElementsByTagName("a")->item(0)->getAttribute("href");
+
+    // Menampilkan informasi (silakan sesuaikan dengan cara Anda menyimpan data)
+    echo "Judul Pekerjaan: $jobTitle<br>";
+    echo "Lokasi: $location<br>";
+    echo "Logo Perusahaan: $companyLogo<br>";
+    echo "Link Pekerjaan: $jobLink<br>";
+    echo "<hr>";
+}
+?>
