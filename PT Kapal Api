@@ -1,6 +1,6 @@
 <?php
 // Set header untuk mengizinkan akses dari domain Blogger
-header("Access-Control-Allow-Origin: https://www.getcond.com");
+header("Access-Control-Allow-Origin: url);
 // ... kode PHP Anda ...
 // URL halaman web target
 $url = "https://dreamjobsja.com/";
